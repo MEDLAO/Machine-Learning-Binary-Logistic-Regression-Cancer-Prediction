@@ -2,6 +2,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
 
 
 # Loading the data
@@ -26,17 +28,31 @@ data['diagnosis'] = data['diagnosis'].astype("category", copy=False)
 data['diagnosis'].value_counts().plot(kind="bar")
 # plt.show()
 
-# dividing the data into features and target variables
+# Dividing the data into features and target variables
 y = data["diagnosis"] # our target variables
 X = data.drop(["diagnosis"], axis=1)
 # print(y)
 # print(X)
 
-# Scaling/Normalization
-# create a scaler object
-scaler = StandardScaler()
+# Scaling
+scaler = StandardScaler() # create a scaler object
 
 # fit the scale to the data and transform the data
 X_scaled = scaler.fit_transform(X)
 # print(X)
 # print(X_scaled)
+
+# Splitting the data into Training and Test sets
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.3, random_state=42)
+
+# Training the data
+# creating the logistic regression model
+lr = LogisticRegression()
+
+# training the model on the training data
+lr.fit(X_train, y_train)
+
+# predicting the target variables on test data
+y_pred = lr.predict(X_test)
+print(y_pred)
+print(y_test)
