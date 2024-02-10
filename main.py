@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
 
 
 # Loading the data
@@ -42,7 +43,7 @@ X_scaled = scaler.fit_transform(X)
 # print(X)
 # print(X_scaled)
 
-# Splitting the data into Training and Test sets
+# Splitting the data into Training and Testing sets
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.3, random_state=42)
 
 # Training the data
@@ -56,3 +57,8 @@ lr.fit(X_train, y_train)
 y_pred = lr.predict(X_test)
 print(y_pred)
 print(y_test)
+
+# Evaluation of the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy: .2f}")
+print(classification_report(y_test, y_pred))
