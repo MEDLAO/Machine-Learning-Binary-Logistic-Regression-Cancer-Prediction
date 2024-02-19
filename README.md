@@ -1,8 +1,8 @@
 ## Project : Binary Logistic Regression Cancer Prediction
 
 <p>
-  <img src="Pictures/countplot.png" width="45%" />
-  <img src="Pictures/sigmoidcurve.png" width="45%" />
+  <img src="pictures/countplot.png" width="45%" />
+  <img src="pictures/sigmoidcurve.png" width="45%" />
 </p>
 
 ### Table of contents :
