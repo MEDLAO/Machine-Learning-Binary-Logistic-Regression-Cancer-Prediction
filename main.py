@@ -1,6 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -13,10 +14,10 @@ data = pd.read_csv("cancer.csv")
 # Viewing the data
 # print(data.head()) # retrieving the first five rows of the dataframe
 # print(data.info()) # succinct summary
-# print(data.describe())
+print(data.describe())
 
 # Cleaning the data
-sns.heatmap(data.isnull()) # visualizing missing data
+# sns.heatmap(data.isnull()) # visualizing missing data
 # plt.show()
 data.drop(["Unnamed: 32", "id"], axis=1, inplace=True)
 # print(data.head())
@@ -26,7 +27,8 @@ data.diagnosis = [1 if value == "M" else 0 for value in data.diagnosis]
 # print(data.head())
 # to convert integers into a category
 data['diagnosis'] = data['diagnosis'].astype("category", copy=False)
-data['diagnosis'].value_counts().plot(kind="bar")
+data['diagnosis'].value_counts()
+# sns.countplot(x='diagnosis', data=data, palette='hls')
 # plt.show()
 
 # Dividing the data into features and target variables
@@ -34,6 +36,11 @@ y = data["diagnosis"] # our target variables
 X = data.drop(["diagnosis"], axis=1)
 # print(y)
 # print(X)
+
+#plot logistic regression curve
+sns.regplot(x=X["radius_mean"], y=y, data=data, logistic=True, ci=None, scatter_kws={'color': 'purple'}, line_kws={'color': 'black'})
+plt.show()
+
 
 # Scaling
 scaler = StandardScaler() # create a scaler object
