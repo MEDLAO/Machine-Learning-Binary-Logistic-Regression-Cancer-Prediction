@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 
 # Loading the data
@@ -68,3 +68,6 @@ print(y_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Accuracy: {accuracy: .2f}")
 print(classification_report(y_test, y_pred))
+
+matrix = confusion_matrix(y_test, y_pred, labels=[0, 1])
+print('Confusion matrix : \n', matrix)

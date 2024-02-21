@@ -15,7 +15,11 @@
 
 ## 1. Problem statement :
 
-
+In this project we are building a Logistic Regression Model based on 
+a breast cancer dataset. The features of this dataset are computed from a digitized image 
+of a fine needle aspirate (FNA) of a breast mass. They describe characteristics of the cell nuclei 
+present in the image.
+The goal is to determine whether a cell is benign or malignant.
 
 ## 2. Compatible configurations :
 
@@ -49,8 +53,6 @@ six 1.16.0
 statsmodels 0.14.1
 threadpoolctl 3.2.0
 tzdata 2023.4
-
-
 ```
 
 ## 4. Steps :
@@ -69,7 +71,7 @@ tzdata 2023.4
 
 ## 5. Conclusion :
 
-  * 
-  * 
+  * Finally, the accuracy of our model is 0.98 (98%) which seems to be a very good performance. 
+  * But we might use other metrics to ensure the quality and the precision of the model.
 
 ---
